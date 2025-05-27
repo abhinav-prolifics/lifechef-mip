@@ -6,8 +6,9 @@ const UtilLayout = () => {
   return (
     <>
       <Stack>
-        <Stack.Screen name="notification" />
-         <Stack.Screen name="mealPlan" />
+        <Stack.Screen name="notification" options={{ title: 'Notifications',animation: 'fade' }} />
+         <Stack.Screen name="mealPlan" options={{ title: 'Meal Plan',animation: 'fade' }} />
+         <Stack.Screen name="support" options={{ title: 'Notifications',animation: 'fade' }}  />
       </Stack>
       <StatusBar style="auto" />
     </>

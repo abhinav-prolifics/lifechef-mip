@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, FlatList, SafeAreaView } from 'react-native';
 import { useRouter } from 'expo-router';
-import { Bell, CheckCircle, ForkKnife, Info } from 'lucide-react-native';
+import { Bell, CheckCircle, ForkKnife, Info, Droplet, Dumbbell, ShoppingCart, Book, Star } from 'lucide-react-native';
 import { StatusBar } from 'expo-status-bar';
 
 const Notification = () => {
@@ -36,9 +36,51 @@ const Notification = () => {
       timestamp: '2023-10-04T11:00:00Z',
       icon: <ForkKnife size={24} color="#007bff" />,
     },
+    {
+      id: 5,
+      title: 'Reminder: Drink Water',
+      message: 'Stay hydrated! Don’t forget to drink water.',
+      timestamp: '2023-10-05T10:45:00Z',
+      icon: <Droplet size={24} color="#00bcd4" />,
+    },
+    {
+      id: 6,
+      title: 'Workout Completed',
+      message: 'Great job! You completed your 30-minute workout today.',
+      timestamp: '2023-10-06T08:30:00Z',
+      icon: <Dumbbell size={24} color="#f44336" />,
+    },
+    {
+      id: 7,
+      title: 'Meal Prep Tips',
+      message: 'Save time during the week with these easy meal prep tips.',
+      timestamp: '2023-10-07T18:00:00Z',
+      icon: <ForkKnife size={24} color="#ffc107" />,
+    },
+    {
+      id: 8,
+      title: 'Grocery Shopping Reminder',
+      message: 'It’s time to restock your kitchen. Don’t forget your essentials!',
+      timestamp: '2023-10-08T14:20:00Z',
+      icon: <ShoppingCart size={24} color="#3f51b5" />,
+    },
+    {
+      id: 9,
+      title: 'New Recipe Available',
+      message: 'A new healthy recipe is available. Try out our quinoa salad!',
+      timestamp: '2023-10-09T16:10:00Z',
+      icon: <Book size={24} color="#8e24aa" />,
+    },
+    {
+      id: 10,
+      title: 'Motivational Quote',
+      message: '“The only bad workout is the one that didn’t happen.” - Anonymous',
+      timestamp: '2023-10-10T07:00:00Z',
+      icon: <Star size={24} color="#f44336" />,
+    },
   ];
 
-  const renderItem = ({ item }:any) => {
+  const renderItem = ({ item }: any) => {
     return (
       <View style={styles.notificationCard}>
         <View style={styles.iconContainer}>
@@ -56,28 +98,18 @@ const Notification = () => {
   };
 
   return (
-    <View style={styles.container}>
-      {/* App Bar with Back Button */}
-      <View style={styles.appBar}>
-        <TouchableOpacity
-          style={styles.backButton}
-          onPress={() => router.back()}
-        >
-          <Bell size={24} color="#fff" />
-        </TouchableOpacity>
-        <Text style={styles.appBarTitle}>Notifications</Text>
+    <SafeAreaView style={{ flex: 1 }}>
+      <View style={styles.container}>
+        {/* Notification List */}
+        <FlatList
+          data={notifications}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id.toString()}
+          contentContainerStyle={styles.notificationList}
+        />
+        <StatusBar style="auto" />
       </View>
-
-      {/* Notification List */}
-      <FlatList
-        data={notifications}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id.toString()}
-        contentContainerStyle={styles.notificationList}
-      />
-      
-      <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -85,23 +117,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f7f7f7',
-  },
-  appBar: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 15,
-    paddingHorizontal: 20,
-    elevation: 5,
-  },
-  backButton: {
-    padding: 10,
-  },
-  appBarTitle: {
-    flex: 1,
-    textAlign: 'center',
-    color: '#fff',
-    fontSize: 20,
-    fontWeight: 'bold',
   },
   notificationList: {
     padding: 15,

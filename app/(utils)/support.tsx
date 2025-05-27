@@ -1,15 +1,16 @@
-import Colors from '@/constants/Colors';
-import { Send } from 'lucide-react-native';
-import React, { useState } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import { View, Text, SafeAreaView, TextInput, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native'; // Import the hook
+import { Send } from 'lucide-react-native';
+import Colors from '@/constants/Colors';
 
 const Support = () => {
+    const navigation = useNavigation(); // Use the navigation hook
     const [messages, setMessages] = useState([
         { id: '1', text: 'Hello! How can I help you today?', sender: 'support' },
         { id: '2', text: 'I need some help with my order.', sender: 'user' },
         { id: '3', text: 'Sure! Let me check that for you.', sender: 'support' },
     ]);
-    
     const [messageText, setMessageText] = useState('');
 
     const handleSendMessage = () => {
@@ -22,7 +23,17 @@ const Support = () => {
         }
     };
 
-    const renderItem = ({ item }:any) => {
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            headerLeft: () => (
+                <TouchableOpacity onPress={() => navigation.goBack()}>
+                    <Text style={{ color: '#007bff', marginLeft: 10 }}>Back</Text>
+                </TouchableOpacity>
+            ),
+        });
+    }, [navigation]);
+
+    const renderItem = ({ item }: any) => {
         return (
             <View
                 style={[
@@ -52,10 +63,7 @@ const Support = () => {
                     placeholder="Type your message..."
                     placeholderTextColor="#888"
                 />
-                <Send onPress={handleSendMessage} style={{marginLeft:10}}/>
-                {/* <TouchableOpacity style={styles.sendButton} onPress={handleSendMessage}>
-                    <Text style={styles.sendButtonText}>Send</Text>
-                </TouchableOpacity> */}
+                <Send onPress={handleSendMessage} style={{ marginLeft: 10 }} />
             </View>
         </SafeAreaView>
     );
@@ -67,7 +75,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#f8f8f8',
     },
     messageList: {
-        paddingBottom: 80, // To avoid overlap with the input area
+        paddingBottom: 80,
     },
     messageContainer: {
         maxWidth: '80%',
@@ -79,7 +87,7 @@ const styles = StyleSheet.create({
     userMessage: {
         alignSelf: 'flex-end',
         backgroundColor: Colors.light.secondary,
-        borderRadius:10,
+        borderRadius: 10,
     },
     supportMessage: {
         alignSelf: 'flex-start',
@@ -104,18 +112,6 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         backgroundColor: '#f1f1f1',
         fontSize: 16,
-    },
-    sendButton: {
-        marginLeft: 10,
-        paddingVertical: 10,
-        paddingHorizontal: 15,
-        backgroundColor: '#007bff',
-        borderRadius: 20,
-    },
-    sendButtonText: {
-        color: '#fff',
-        fontSize: 16,
-        fontWeight: 'bold',
     },
 });
 
