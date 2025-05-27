@@ -1,15 +1,15 @@
-import { useState } from 'react';
-import { StyleSheet, ScrollView, View, Image, TouchableOpacity, Platform, RefreshControl } from 'react-native';
-import { ThemedView, Card } from '@/components/ThemedView';
-import { ThemedText, Title, Subtitle, Caption } from '@/components/ThemedText';
-import Button from '@/components/Button';
 import Badge from '@/components/Badge';
+import Button from '@/components/Button';
 import ProgressCircle from '@/components/ProgressCircle';
-import { Bell, ChevronRight, Scan, DollarSign, Award } from 'lucide-react-native';
+import { Caption, Subtitle, ThemedText, Title } from '@/components/ThemedText';
+import { Card, ThemedView } from '@/components/ThemedView';
 import Colors from '@/constants/Colors';
-import useColorScheme from '@/hooks/useColorScheme';
 import Layout from '@/constants/Layout';
+import useColorScheme from '@/hooks/useColorScheme';
 import { router } from 'expo-router';
+import { Award, Bell, ChevronRight, DollarSign, Scan } from 'lucide-react-native';
+import { useState } from 'react';
+import { Image, Platform, RefreshControl, ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
 
 export default function HomeScreen() {
   const colorScheme = useColorScheme();
@@ -240,8 +240,10 @@ export default function HomeScreen() {
               ))}
           
           <Button
-            title= {showAllMeals ? 'Hide' : 'View Meal Plans'}
-            onPress={() => setShowAllMeals(!showAllMeals)}
+            title="View Meal Plan"
+             onPress={() => {
+            router.push("/(utils)/mealPlan")
+          }}
             variant="outline"
             fullWidth
             style={styles.viewMealsButton}

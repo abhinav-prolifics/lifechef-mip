@@ -1,13 +1,13 @@
-import { useState } from 'react';
-import { StyleSheet, View, Image, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
-import { router } from 'expo-router';
-import { ThemedView } from '@/components/ThemedView';
-import { ThemedText, Title } from '@/components/ThemedText';
 import Button from '@/components/Button';
 import Input from '@/components/Input';
-import { Mail, Lock } from 'lucide-react-native';
+import { ThemedText, Title } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
 import Colors from '@/constants/Colors';
 import useColorScheme from '@/hooks/useColorScheme';
+import { router } from 'expo-router';
+import { Lock, Mail } from 'lucide-react-native';
+import { useState } from 'react';
+import { Image, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, View } from 'react-native';
 
 export default function AuthScreen() {
   const colorScheme = useColorScheme();
@@ -38,7 +38,7 @@ export default function AuthScreen() {
   };
 
   const handleLogin = () => {
-    if (!validateInputs()) return;
+    // if (!validateInputs()) return;
     
     setIsLoading(true);
     
