@@ -16,6 +16,7 @@ export default function HomeScreen() {
   const colors = Colors[colorScheme];
   const [refreshing, setRefreshing] = useState(false);
   const [showAllMeals, setShowAllMeals] = useState(false);
+  const [showRewardDetails, setShowRewardDetails] = useState(false);
 
   // Stubbed data
   const userData = {
@@ -29,18 +30,68 @@ export default function HomeScreen() {
       weigh_ins: 0.8,
       overall: 0.75,
     },
-    upcomingMeals: [
-      { id: 1, name: 'Mediterranean Salad Bowl', time: 'Lunch' },
-      { id: 2, name: 'Grilled Chicken with Vegetables', time: 'Dinner' },
-      { id: 3, name: 'Avocado Toast with Egg', time: 'Breakfast' },
-      { id: 4, name: 'Quinoa & Black Bean Wrap', time: 'Lunch' },
-      { id: 5, name: 'Spaghetti with Turkey Meatballs', time: 'Dinner' },
-      { id: 6, name: 'Greek Yogurt with Berries', time: 'Breakfast' },
-      { id: 7, name: 'Lentil Soup with Whole Grain Bread', time: 'Lunch' },
-      { id: 8, name: 'Grilled Salmon with Asparagus', time: 'Dinner' },
-      { id: 9, name: 'Overnight Oats with Banana', time: 'Breakfast' },
-      { id: 10, name: 'Chickpea Buddha Bowl', time: 'Lunch' }
-    ],
+  upcomingMeals: [
+    {
+      id: 1,
+      name: 'Mediterranean Salad Bowl',
+      time: 'Lunch',
+      image: 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg',
+    },
+    {
+      id: 2,
+      name: 'Italian Meatballs, Roasted Mushrooms, Steamed Spinach',
+      time: 'Dinner',
+      image: 'https://www.lifechef.com/media/all/sqr/119585-sqr.png?format=auto&width=600',
+    },
+    {
+      id: 3,
+      name: 'Turkey Chili, Braised Kale, Roasted Mushrooms',
+      time: 'Lunch',
+      image: 'https://img.lifechef.com/nwp/21321_12014_20321_nwp.png?d=808',
+    },
+    {
+      id: 4,
+      name: 'Turkey & Sweet Potato Hash',
+      time: 'Breakfast',
+      image: 'https://www.lifechef.com/media/all/breakfast/sqr/21301.jpg?format=auto&width=600',
+    },
+    {
+      id: 5,
+      name: 'Cod with Tomato and Capers, Braised Kale, Steamed Broccoli',
+      time: 'Lunch',
+      image: 'https://www.lifechef.com/media/all/sqr/113643-sqr.png?format=auto&width=600',
+    },
+    {
+      id: 6,
+      name: 'Turkey Nutri-Morning',
+      time: 'Breakfast',
+      image: 'https://www.lifechef.com/media/all/breakfast/sqr/21331.jpg?format=auto&width=600',
+    },
+    {
+      id: 7,
+      name: 'Fajita Shrimp, Steamed Broccoli, Riced Cauliflower',
+      time: 'Lunch',
+      image: 'https://www.lifechef.com/media/all/sqr/114293-sqr.png?format=auto&width=600',
+    },
+    {
+      id: 8,
+      name: 'Italian Meatballs',
+      time: 'Dinner',
+      image: 'https://www.lifechef.com/media/all/op/12012-op.jpg?format=auto&width=375',
+    },
+    {
+      id: 9,
+      name: 'Mediterranean Orzo',
+      time: 'Breakfast',
+      image: 'https://www.lifechef.com/media/all/op/12013-op.jpg?format=auto&width=375',
+    },
+    {
+      id: 10,
+      name: 'Chickpea Buddha Bowl',
+      time: 'Lunch',
+      image: 'https://images.pexels.com/photos/6546021/pexels-photo-6546021.jpeg',
+    },
+  ],
     notifications: [
       { id: 1, type: 'reminder', message: 'Remember to log your breakfast', time: '1 hour ago' },
       { id: 2, type: 'reward', message: 'You earned $5 for logging all meals this week!', time: '5 hours ago' },
@@ -74,11 +125,7 @@ export default function HomeScreen() {
             <ThemedText style={styles.greeting}>Welcome back,</ThemedText>
             <Title>{userData.name}</Title>
           </View>
-          <TouchableOpacity style={styles.notificationButton} 
-          onPress={() => {
-            router.push("/(utils)/notification")
-          }}
-          >
+          <TouchableOpacity style={styles.notificationButton} onPress={()=>{router.push("/(utils)/notification")}}>
             <Bell size={24} color={colors.text} />
             <View style={[styles.notificationBadge, { backgroundColor: colors.primary }]}>
               <ThemedText style={styles.notificationCount} lightColor="#FFFFFF" darkColor="#FFFFFF">
@@ -115,13 +162,23 @@ export default function HomeScreen() {
           <View style={styles.rewardsFooter}>
             <Button
               title="View Details"
-              onPress={() => {}}
+              onPress={() => setShowRewardDetails(!showRewardDetails)}
               variant="outline"
               size="small"
               icon={<ChevronRight size={16} color={colors.primary} />}
             />
           </View>
+
+            {showRewardDetails && (
+              <View style={styles.rewardHistory}>
+                <Subtitle lightColor="#000000" darkColor="#000000">Reward History</Subtitle>
+                <Caption>- $10 for meals this week</Caption>
+                <Caption>- $5 bonus for daily weigh-ins</Caption>
+                <Caption>- $105 past rewards</Caption>
+              </View>
+            )}
         </Card>
+
 
         {/* Compliance Card */}
         <Card>
@@ -164,28 +221,27 @@ export default function HomeScreen() {
             </TouchableOpacity>
           </View>
           
-                {mealsToDisplay.map((meal) => (
-                  <View key={meal.id} style={styles.mealItem}>
-                    <Image
-                      source={{ uri: 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg' }}
-                      style={styles.mealImage}
-                    />
-                    <View style={styles.mealInfo}>
-                      <ThemedText style={styles.mealName}>{meal.name}</ThemedText>
-                      <Badge label={meal.time} variant="primary" size="small" />
-                    </View>
-                    <TouchableOpacity 
-                      style={[styles.scanButton, { backgroundColor: colors.primary }]}
-                    >
-                      <Scan size={20} color="#FFFFFF" />
-                    </TouchableOpacity>
+               {mealsToDisplay.map((meal) => (
+                <View key={meal.id} style={styles.mealItem}>
+                  <Image
+                    source={{ uri: meal.image }}
+                    style={styles.mealImage}
+                  />
+                  <View style={styles.mealInfo}>
+                    <ThemedText style={styles.mealName}>{meal.name}</ThemedText>
+                    <Badge label={meal.time} variant="primary" size="small" />
                   </View>
-                ))}
-
+                  <TouchableOpacity 
+                    style={[styles.scanButton, { backgroundColor: colors.primary }]}
+                  >
+                    <Scan size={20} color="#FFFFFF" />
+                  </TouchableOpacity>
+                </View>
+              ))}
           
           <Button
-            title="View Meal Plan"
-            onPress={() => {}}
+            title= {showAllMeals ? 'Hide' : 'View Meal Plans'}
+            onPress={() => setShowAllMeals(!showAllMeals)}
             variant="outline"
             fullWidth
             style={styles.viewMealsButton}
@@ -291,6 +347,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     marginBottom: 16,
+  },
+  rewardHistory: {
+  marginTop: 10,
+  paddingHorizontal: 16,
   },
   rewardItem: {
     alignItems: 'center',
