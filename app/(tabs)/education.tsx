@@ -70,7 +70,7 @@ export default function EducationScreen() {
     { id: 4, name: 'Mental Health', icon: <Brain size={24} color={colors.primary} /> },
   ];
 
-  const renderContentItem = (item) => (
+  const renderContentItem = (item:any) => (
     <TouchableOpacity key={item.id} style={styles.contentCard}>
       <Image source={{ uri: item.image }} style={styles.contentImage} />
       <View style={styles.contentTypeContainer}>
@@ -99,7 +99,7 @@ export default function EducationScreen() {
         </View>
         
         <View style={styles.tagsContainer}>
-          {item.tags.map((tag, index) => (
+          {item.tags.map((tag:any, index:number) => (
             <Badge 
               key={index} 
               label={tag} 

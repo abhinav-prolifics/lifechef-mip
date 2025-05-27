@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router';
-import { Clipboard, Apple, Chrome as Home, User, MessageCircle, BookOpen, Bell } from 'lucide-react-native';
+import { Clipboard, Apple, Home as Home, User, MessageCircle, BookOpen, Bell } from 'lucide-react-native';
 import Colors from '@/constants/Colors';
 import useColorScheme from '@/hooks/useColorScheme';
 
@@ -39,7 +39,8 @@ export default function TabLayout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ color, size }) => <Home size={size} color={color} />,
-          headerTitle: 'Member Dashboard',
+          headerTitle: 'User Dashboard',
+          headerShown: false,
         }}
       />
       <Tabs.Screen

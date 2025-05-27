@@ -9,11 +9,13 @@ import { Bell, ChevronRight, Scan, DollarSign, Award } from 'lucide-react-native
 import Colors from '@/constants/Colors';
 import useColorScheme from '@/hooks/useColorScheme';
 import Layout from '@/constants/Layout';
+import { router } from 'expo-router';
 
 export default function HomeScreen() {
   const colorScheme = useColorScheme();
   const colors = Colors[colorScheme];
   const [refreshing, setRefreshing] = useState(false);
+  const [showAllMeals, setShowAllMeals] = useState(false);
 
   // Stubbed data
   const userData = {
@@ -30,12 +32,25 @@ export default function HomeScreen() {
     upcomingMeals: [
       { id: 1, name: 'Mediterranean Salad Bowl', time: 'Lunch' },
       { id: 2, name: 'Grilled Chicken with Vegetables', time: 'Dinner' },
+      { id: 3, name: 'Avocado Toast with Egg', time: 'Breakfast' },
+      { id: 4, name: 'Quinoa & Black Bean Wrap', time: 'Lunch' },
+      { id: 5, name: 'Spaghetti with Turkey Meatballs', time: 'Dinner' },
+      { id: 6, name: 'Greek Yogurt with Berries', time: 'Breakfast' },
+      { id: 7, name: 'Lentil Soup with Whole Grain Bread', time: 'Lunch' },
+      { id: 8, name: 'Grilled Salmon with Asparagus', time: 'Dinner' },
+      { id: 9, name: 'Overnight Oats with Banana', time: 'Breakfast' },
+      { id: 10, name: 'Chickpea Buddha Bowl', time: 'Lunch' }
     ],
     notifications: [
       { id: 1, type: 'reminder', message: 'Remember to log your breakfast', time: '1 hour ago' },
       { id: 2, type: 'reward', message: 'You earned $5 for logging all meals this week!', time: '5 hours ago' },
     ],
   };
+
+    const mealsToDisplay = showAllMeals
+    ? userData.upcomingMeals
+    : userData.upcomingMeals.slice(0, 3);
+
 
   const onRefresh = () => {
     setRefreshing(true);
@@ -59,7 +74,11 @@ export default function HomeScreen() {
             <ThemedText style={styles.greeting}>Welcome back,</ThemedText>
             <Title>{userData.name}</Title>
           </View>
-          <TouchableOpacity style={styles.notificationButton}>
+          <TouchableOpacity style={styles.notificationButton} 
+          onPress={() => {
+            router.push("/(utils)/notification")
+          }}
+          >
             <Bell size={24} color={colors.text} />
             <View style={[styles.notificationBadge, { backgroundColor: colors.primary }]}>
               <ThemedText style={styles.notificationCount} lightColor="#FFFFFF" darkColor="#FFFFFF">
@@ -76,7 +95,7 @@ export default function HomeScreen() {
               <DollarSign size={20} color="#FFFFFF" />
             </View>
             <View>
-              <Subtitle>Current Rewards</Subtitle>
+              <Subtitle lightColor="#000000" darkColor="#000000">Current Rewards</Subtitle>
               <Caption>Keep up the good work!</Caption>
             </View>
           </View>
@@ -114,21 +133,21 @@ export default function HomeScreen() {
           <View style={styles.complianceContainer}>
             <View style={styles.progressItem}>
               <ProgressCircle
-                size={80}
+                size={90}
                 progress={userData.compliance.meals}
                 label="Meals"
               />
             </View>
             <View style={styles.progressItem}>
               <ProgressCircle
-                size={80}
+                size={90}
                 progress={userData.compliance.weigh_ins}
                 label="Weigh-ins"
               />
             </View>
             <View style={styles.progressItem}>
               <ProgressCircle
-                size={80}
+                size={90}
                 progress={userData.compliance.overall}
                 label="Overall"
               />
@@ -140,28 +159,29 @@ export default function HomeScreen() {
         <Card>
           <View style={styles.sectionHeader}>
             <Subtitle>Today's Meals</Subtitle>
-            <TouchableOpacity>
-              <ThemedText style={styles.seeAllLink}>See All</ThemedText>
+            <TouchableOpacity onPress={() => setShowAllMeals(!showAllMeals)}>
+              <ThemedText style={styles.seeAllLink}> {showAllMeals ? 'Show Less' : 'See All'}</ThemedText>
             </TouchableOpacity>
           </View>
           
-          {userData.upcomingMeals.map((meal) => (
-            <View key={meal.id} style={styles.mealItem}>
-              <Image
-                source={{ uri: 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg' }}
-                style={styles.mealImage}
-              />
-              <View style={styles.mealInfo}>
-                <ThemedText style={styles.mealName}>{meal.name}</ThemedText>
-                <Badge label={meal.time} variant="primary" size="small" />
-              </View>
-              <TouchableOpacity 
-                style={[styles.scanButton, { backgroundColor: colors.primary }]}
-              >
-                <Scan size={18} color="#FFFFFF" />
-              </TouchableOpacity>
-            </View>
-          ))}
+                {mealsToDisplay.map((meal) => (
+                  <View key={meal.id} style={styles.mealItem}>
+                    <Image
+                      source={{ uri: 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg' }}
+                      style={styles.mealImage}
+                    />
+                    <View style={styles.mealInfo}>
+                      <ThemedText style={styles.mealName}>{meal.name}</ThemedText>
+                      <Badge label={meal.time} variant="primary" size="small" />
+                    </View>
+                    <TouchableOpacity 
+                      style={[styles.scanButton, { backgroundColor: colors.primary }]}
+                    >
+                      <Scan size={20} color="#FFFFFF" />
+                    </TouchableOpacity>
+                  </View>
+                ))}
+
           
           <Button
             title="View Meal Plan"
@@ -221,6 +241,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 16,
+    marginTop: Platform.OS === 'ios' ? 40 : 40,
   },
   greeting: {
     fontSize: 16,
@@ -255,6 +276,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 16,
+
   },
   rewardsIconContainer: {
     width: 36,
@@ -283,6 +305,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 4,
     fontFamily: 'Inter-Bold',
+    color:'#34A34F'
   },
   rewardsFooter: {
     alignItems: 'flex-end',
@@ -334,6 +357,8 @@ const styles = StyleSheet.create({
     height: 36,
     borderRadius: 18,
     justifyContent: 'center',
+    marginTop:14,
+    margin:8,
     alignItems: 'center',
   },
   viewMealsButton: {

@@ -58,17 +58,17 @@ export default function AuthScreen() {
         <ThemedView style={styles.container}>
           <View style={styles.logoContainer}>
             <Image
-              source={{ uri: 'https://images.pexels.com/photos/5929/food-salad-healthy-vegetables.jpg' }}
+              source={{ uri: 'https://t3.ftcdn.net/jpg/02/93/22/02/360_F_293220207_aSKIua6mTAymZDbIJOSOApeJ7vNoD6Zd.jpghttps://t3.ftcdn.net/jpg/02/93/22/02/360_F_293220207_aSKIua6mTAymZDbIJOSOApeJ7vNoD6Zd.jpg' }}
               style={styles.backgroundImage}
             />
-            <View style={[styles.overlay, { backgroundColor: colors.primary }]} />
+            <View style={[styles.overlay , {backgroundColor: colors.primary }]} />
             <Image
-              source={{ uri: 'https://www.lifechef.com/wp-content/uploads/2023/11/logo-white.png' }}
+              source={{ uri: 'https://th.bing.com/th/id/OIP.5NoAJBfu6cLaZYUK2ISAqwHaHa?cb=iwc2&pid=ImgDet&w=178&h=178&c=7&dpr=1.5' }}
               style={styles.logo}
               resizeMode="contain"
             />
             <ThemedText style={styles.logoText} lightColor="#FFFFFF" darkColor="#FFFFFF">
-              Member Intelligence Platform
+              Lifechef Health Platform 
             </ThemedText>
           </View>
           

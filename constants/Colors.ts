@@ -26,7 +26,7 @@ export default {
     tint: tintColorDark,
     tabIconDefault: '#777777',
     tabIconSelected: tintColorDark,
-    primary: '#4CAF50',
+    primary: '#2f9347',
     secondary: '#81C784',
     tertiary: '#A5D6A7',
     accent: '#FFB74D',
