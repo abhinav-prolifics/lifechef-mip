@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "LifeChef MIP",
+    "name": "Life Chef Member intelligence platform",
     "slug": "lifechef-mip",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "https://th.bing.com/th/id/OIP.5NoAJBfu6cLaZYUK2ISAqwHaHa?cb=iwc2&pid=ImgDet&w=178&h=178&c=7&dpr=1.5",
     "scheme": "lifechefmip",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,

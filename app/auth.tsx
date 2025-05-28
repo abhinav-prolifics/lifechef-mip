@@ -68,7 +68,7 @@ export default function AuthScreen() {
               resizeMode="contain"
             />
             <ThemedText style={styles.logoText} lightColor="#FFFFFF" darkColor="#FFFFFF">
-              Lifechef Health Platform 
+             Life Chef Member intelligence platform
             </ThemedText>
           </View>
           
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     width: 180,
-    height: 60,
+    height: 100,
     marginBottom: 12,
   },
   logoText: {

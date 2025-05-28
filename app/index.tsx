@@ -33,7 +33,7 @@ export default function SplashScreen() {
           resizeMode="contain"
         />
         <ThemedText style={styles.title} lightColor="#FFFFFF" darkColor="#FFFFFF">
-          Member Intelligence Platform
+          Member Intelligence Platform 
         </ThemedText>
       </View>
     </LinearGradient>
