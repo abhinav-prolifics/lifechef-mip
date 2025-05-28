@@ -10,7 +10,6 @@ const UtilLayout = () => {
         <Stack.Screen name="mealPlan" options={{ headerShown: true, title: 'Meal Plan', animation: 'fade' }} />
         <Stack.Screen name="support" options={{ headerShown: true, title: 'Support', animation: 'fade' }} />
       </Stack>
-      <StatusBar style="auto" />
     </>
   )
 }
