@@ -290,17 +290,19 @@ export default function HealthScreen() {
               ))}
 
               <Card style={styles.syncCard}>
+              <View style={styles.cardWrapper}>
                 <View style={styles.syncCardContent}>
-                  <View>
+                  <View style={{ flex: 1, marginRight: 12 }}>
                     <Subtitle>Auto-Sync Data</Subtitle>
                     <Caption>All your devices sync automatically every hour</Caption>
                   </View>
                   <Button
                     title="Sync Now"
-                    onPress={() => { }}
+                    onPress={() => {}}
                     size="small"
                   />
                 </View>
+              </View>
               </Card>
             </>
           )}
@@ -515,11 +517,23 @@ const styles = StyleSheet.create({
     marginTop: 8,
     marginBottom: 32,
   },
-  syncCardContent: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
+  cardWrapper: {
+  backgroundColor: '#fff',
+  padding: 12,
+  borderRadius: 10,
+  margin: 10,
+  elevation: 2, 
+  shadowColor: '#000', 
+  shadowOffset: { width: 0, height: 1 },
+  shadowOpacity: 0.1,
+  shadowRadius: 4,
+},
+syncCardContent: {
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  flexWrap: 'wrap', 
+},
   reportsTitle: {
     marginBottom: 4,
   },

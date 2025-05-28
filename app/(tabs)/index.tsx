@@ -7,7 +7,7 @@ import Colors from '@/constants/Colors';
 import Layout from '@/constants/Layout';
 import useColorScheme from '@/hooks/useColorScheme';
 import { router } from 'expo-router';
-import { Award, Bell, ChevronRight, DollarSign, MessageCircle, Scan } from 'lucide-react-native';
+import { Award, Bell, ChevronRight, ChevronUp, DollarSign, MessageCircle, Scan } from 'lucide-react-native';
 import { useState } from 'react';
 import { Image, Platform, RefreshControl, ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
 
@@ -164,7 +164,13 @@ export default function HomeScreen() {
               onPress={() => setShowRewardDetails(!showRewardDetails)}
               variant="outline"
               size="small"
-              icon={<ChevronRight size={16} color={colors.primary} />}
+              icon={
+                showRewardDetails ? (
+                  <ChevronUp size={16} color={colors.primary} />
+                ) : (
+                  <ChevronRight size={16} color={colors.primary} />
+                )
+              }
             />
           </View>
 
