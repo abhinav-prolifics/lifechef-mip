@@ -240,7 +240,7 @@ export default function HomeScreen() {
 
           <Button
             title= {showAllMeals ? 'Hide' : 'View Meal Plans'}
-            onPress={() => setShowAllMeals(!showAllMeals)}
+            onPress={() => router.push('/(utils)/mealPlan')}
             variant="outline"
             fullWidth
             style={styles.viewMealsButton}

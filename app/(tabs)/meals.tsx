@@ -8,6 +8,7 @@ import { Camera, Calendar, Clock, Search, Filter, ChevronRight, ArrowRight, Scan
 import Colors from '@/constants/Colors';
 import useColorScheme from '@/hooks/useColorScheme';
 import Input from '@/components/Input';
+import { router } from 'expo-router';
 
 export default function MealsScreen() {
   const colorScheme = useColorScheme();
@@ -257,12 +258,12 @@ export default function MealsScreen() {
         <Card style={styles.planCard}>
           <View style={styles.planCardContent}>
             <View>
-              <Subtitle>Your Diet Plan</Subtitle>
+              <Subtitle>Your Meal Plan</Subtitle>
               <Caption>View your personalized meal recommendations</Caption>
             </View>
             <Button
               title="View"
-              onPress={() => { }}
+               onPress={() => router.push('/(utils)/mealPlan')}
               variant="primary"
               style={styles.viewPlanButton}
               size="small"
@@ -365,6 +366,7 @@ const styles = StyleSheet.create({
   tagsContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
+    marginTop:8,
     flex: 1,
   },
   tagBadge: {

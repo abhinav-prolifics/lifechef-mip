@@ -299,7 +299,7 @@ const { width } = Dimensions.get('window');
 const days = ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'];
 const MealCard = ({ meal, onPress }:any) => {
   return (
-    <TouchableOpacity onPress={onPress} style={{ margin: 10, width: width * 0.8, borderRadius: 16, backgroundColor: '#f9f9f9', padding: 10, elevation: 3 }}>
+    <TouchableOpacity onPress={onPress} style={{ margin: 10, width: width * 0.85, borderRadius: 16, backgroundColor: '#f5f5f5', padding: 10, elevation: 3 }}>
       <Image source={{ uri: meal.image }} style={{ width: '100%', height: 150, borderRadius: 12 }} resizeMode="cover" />
       <Text style={{ fontWeight: 'bold', fontSize: 16, marginTop: 8 }}>{meal.title}</Text>
       <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: 10 }}>
@@ -317,18 +317,10 @@ export default function YourMealPlanScreen() {
   const [selectedMeal, setSelectedMeal] = useState<any>(null);
 
   const meals = mealData[selectedDay];
-   const router = useRouter();
 
 
   return (
     <ScrollView style={{ flex: 1, padding: 10, paddingBottom:20, paddingTop:30, backgroundColor: '#fff' }}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 16 }}>
-      <TouchableOpacity onPress={() => router.back()} style={{ marginRight: 8 }}>
-        <ChevronLeft size={24} color="black" />
-      </TouchableOpacity>
-      <Text style={{ fontSize: 24, fontWeight: 'bold' }}>Your Meal Plan</Text>
-    </View>
-
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginBottom: 16 }}>
         {days.map(day => (
           <TouchableOpacity key={day} onPress={() => setSelectedDay(day)}>
