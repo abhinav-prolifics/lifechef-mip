@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, ScrollView, View, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, ScrollView, View, TouchableOpacity, Image, SafeAreaView } from 'react-native';
 import { ThemedView, Card } from '@/components/ThemedView';
 import { ThemedText, Title, Subtitle, Caption } from '@/components/ThemedText';
 import Button from '@/components/Button';
@@ -74,7 +74,7 @@ export default function HealthScreen() {
   };
 
   // Render a health metric card
-  const renderHealthMetric = (title, data, icon, color) => (
+  const renderHealthMetric = (title: any, data: any, icon: any, color: any) => (
     <Card style={styles.metricCard}>
       <View style={styles.metricHeader}>
         <View style={[styles.metricIconContainer, { backgroundColor: color }]}>
@@ -85,7 +85,7 @@ export default function HealthScreen() {
           <Caption>Last updated {data.lastUpdated}</Caption>
         </View>
       </View>
-      
+
       <View style={styles.metricContent}>
         <View>
           <ThemedText style={styles.currentValue}>
@@ -105,12 +105,12 @@ export default function HealthScreen() {
           label={`${Math.round(data.progress * 100)}%`}
         />
       </View>
-      
+
       <View style={styles.metricFooter}>
         <Caption>Goal: {data.goal} {data.unit}</Caption>
         <Button
           title="View History"
-          onPress={() => {}}
+          onPress={() => { }}
           variant="text"
           size="small"
           style={{ padding: 0 }}
@@ -122,239 +122,241 @@ export default function HealthScreen() {
   return (
     <ThemedView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
-        {/* Tab Selector */}
-        <View style={styles.tabContainer}>
-          <TouchableOpacity
-            onPress={() => setActiveTab('overview')}
-            style={[
-              styles.tab,
-              activeTab === 'overview' && { borderBottomColor: colors.primary },
-            ]}
-          >
-            <ThemedText
+        <SafeAreaView>
+          {/* Tab Selector */}
+          <View style={styles.tabContainer}>
+            <TouchableOpacity
+              onPress={() => setActiveTab('overview')}
               style={[
-                styles.tabText,
-                activeTab === 'overview' && { color: colors.primary, fontFamily: 'Inter-SemiBold' },
+                styles.tab,
+                activeTab === 'overview' && { borderBottomColor: colors.primary },
               ]}
             >
-              Overview
-            </ThemedText>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => setActiveTab('devices')}
-            style={[
-              styles.tab,
-              activeTab === 'devices' && { borderBottomColor: colors.primary },
-            ]}
-          >
-            <ThemedText
-              style={[
-                styles.tabText,
-                activeTab === 'devices' && { color: colors.primary, fontFamily: 'Inter-SemiBold' },
-              ]}
-            >
-              My Devices
-            </ThemedText>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => setActiveTab('reports')}
-            style={[
-              styles.tab,
-              activeTab === 'reports' && { borderBottomColor: colors.primary },
-            ]}
-          >
-            <ThemedText
-              style={[
-                styles.tabText,
-                activeTab === 'reports' && { color: colors.primary, fontFamily: 'Inter-SemiBold' },
-              ]}
-            >
-              Reports
-            </ThemedText>
-          </TouchableOpacity>
-        </View>
-        
-        {activeTab === 'overview' && (
-          <>
-            {/* Add Health Data Button */}
-            <TouchableOpacity style={[styles.addDataButton, { borderColor: colors.primary }]}>
-              <PlusCircle size={20} color={colors.primary} style={styles.addDataIcon} />
-              <ThemedText style={[styles.addDataText, { color: colors.primary }]}>
-                Add Health Data Manually
+              <ThemedText
+                style={[
+                  styles.tabText,
+                  activeTab === 'overview' && { color: colors.primary, fontFamily: 'Inter-SemiBold' },
+                ]}
+              >
+                Overview
               </ThemedText>
             </TouchableOpacity>
-            
-            {/* Health Metrics */}
-            {renderHealthMetric(
-              'Weight', 
-              healthData.weight, 
-              <Weight size={18} color="#FFFFFF" />, 
-              colors.primary
-            )}
-            
-            {renderHealthMetric(
-              'Blood Glucose', 
-              healthData.glucose, 
-              <ActivitySquare size={18} color="#FFFFFF" />, 
-              colors.secondary
-            )}
-            
-            {renderHealthMetric(
-              'Blood Pressure', 
-              healthData.bloodPressure, 
-              <Heart size={18} color="#FFFFFF" />, 
-              colors.accent
-            )}
-            
-            {/* Upcoming Appointment */}
-            <Card style={styles.appointmentCard}>
-              <View style={styles.appointmentHeader}>
-                <View style={[styles.appointmentIconContainer, { backgroundColor: colors.tertiary }]}>
-                  <CalendarDays size={18} color="#FFFFFF" />
-                </View>
-                <View>
-                  <Subtitle>Upcoming Appointment</Subtitle>
-                  <Caption>{healthData.nextAppointment.type}</Caption>
-                </View>
-              </View>
-              
-              <View style={styles.appointmentDetails}>
-                <View style={styles.appointmentDetail}>
-                  <ThemedText style={styles.appointmentLabel}>Date:</ThemedText>
-                  <ThemedText>{healthData.nextAppointment.date}</ThemedText>
-                </View>
-                <View style={styles.appointmentDetail}>
-                  <ThemedText style={styles.appointmentLabel}>Time:</ThemedText>
-                  <ThemedText>{healthData.nextAppointment.time}</ThemedText>
-                </View>
-                <View style={styles.appointmentDetail}>
-                  <ThemedText style={styles.appointmentLabel}>Provider:</ThemedText>
-                  <ThemedText>{healthData.nextAppointment.provider}</ThemedText>
-                </View>
-              </View>
-              
-              <View style={styles.appointmentActions}>
-                <Button
-                  title="Reschedule"
-                  onPress={() => {}}
-                  variant="outline"
-                  size="small"
-                  style={styles.appointmentButton}
-                />
-                <Button
-                  title="Join Call"
-                  onPress={() => {}}
-                  size="small"
-                  style={styles.appointmentButton}
-                />
-              </View>
-            </Card>
-          </>
-        )}
-        
-        {activeTab === 'devices' && (
-          <>
-            <View style={styles.devicesHeader}>
-              <Subtitle>Connected Devices</Subtitle>
-              <Button
-                title="Add Device"
-                onPress={() => {}}
-                variant="outline"
-                size="small"
-                icon={<PlusCircle size={16} color={colors.primary} />}
-              />
-            </View>
-            
-            {healthData.devices.map(device => (
-              <Card key={device.id} style={styles.deviceCard}>
-                <View style={styles.deviceContent}>
-                  <Image source={{ uri: device.image }} style={styles.deviceImage} />
-                  <View style={styles.deviceInfo}>
-                    <ThemedText style={styles.deviceName}>{device.name}</ThemedText>
-                    <View style={styles.deviceStatus}>
-                      <View 
-                        style={[
-                          styles.statusIndicator, 
-                          { backgroundColor: device.connected ? colors.success : colors.error }
-                        ]} 
-                      />
-                      <Caption>
-                        {device.connected ? 'Connected' : 'Disconnected'} · Last sync {device.lastSync}
-                      </Caption>
-                    </View>
+            <TouchableOpacity
+              onPress={() => setActiveTab('devices')}
+              style={[
+                styles.tab,
+                activeTab === 'devices' && { borderBottomColor: colors.primary },
+              ]}
+            >
+              <ThemedText
+                style={[
+                  styles.tabText,
+                  activeTab === 'devices' && { color: colors.primary, fontFamily: 'Inter-SemiBold' },
+                ]}
+              >
+                My Devices
+              </ThemedText>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => setActiveTab('reports')}
+              style={[
+                styles.tab,
+                activeTab === 'reports' && { borderBottomColor: colors.primary },
+              ]}
+            >
+              <ThemedText
+                style={[
+                  styles.tabText,
+                  activeTab === 'reports' && { color: colors.primary, fontFamily: 'Inter-SemiBold' },
+                ]}
+              >
+                Reports
+              </ThemedText>
+            </TouchableOpacity>
+          </View>
+
+          {activeTab === 'overview' && (
+            <>
+              {/* Add Health Data Button */}
+              <TouchableOpacity style={[styles.addDataButton, { borderColor: colors.primary }]}>
+                <PlusCircle size={20} color={colors.primary} style={styles.addDataIcon} />
+                <ThemedText style={[styles.addDataText, { color: colors.primary }]}>
+                  Add Health Data Manually
+                </ThemedText>
+              </TouchableOpacity>
+
+              {/* Health Metrics */}
+              {renderHealthMetric(
+                'Weight',
+                healthData.weight,
+                <Weight size={18} color="#FFFFFF" />,
+                colors.primary
+              )}
+
+              {renderHealthMetric(
+                'Blood Glucose',
+                healthData.glucose,
+                <ActivitySquare size={18} color="#FFFFFF" />,
+                colors.secondary
+              )}
+
+              {renderHealthMetric(
+                'Blood Pressure',
+                healthData.bloodPressure,
+                <Heart size={18} color="#FFFFFF" />,
+                colors.accent
+              )}
+
+              {/* Upcoming Appointment */}
+              <Card style={styles.appointmentCard}>
+                <View style={styles.appointmentHeader}>
+                  <View style={[styles.appointmentIconContainer, { backgroundColor: colors.tertiary }]}>
+                    <CalendarDays size={18} color="#FFFFFF" />
                   </View>
-                  <ChevronRight size={20} color={colors.placeholder} />
+                  <View>
+                    <Subtitle>Upcoming Appointment</Subtitle>
+                    <Caption>{healthData.nextAppointment.type}</Caption>
+                  </View>
+                </View>
+
+                <View style={styles.appointmentDetails}>
+                  <View style={styles.appointmentDetail}>
+                    <ThemedText style={styles.appointmentLabel}>Date:</ThemedText>
+                    <ThemedText>{healthData.nextAppointment.date}</ThemedText>
+                  </View>
+                  <View style={styles.appointmentDetail}>
+                    <ThemedText style={styles.appointmentLabel}>Time:</ThemedText>
+                    <ThemedText>{healthData.nextAppointment.time}</ThemedText>
+                  </View>
+                  <View style={styles.appointmentDetail}>
+                    <ThemedText style={styles.appointmentLabel}>Provider:</ThemedText>
+                    <ThemedText>{healthData.nextAppointment.provider}</ThemedText>
+                  </View>
+                </View>
+
+                <View style={styles.appointmentActions}>
+                  <Button
+                    title="Reschedule"
+                    onPress={() => { }}
+                    variant="outline"
+                    size="small"
+                    style={styles.appointmentButton}
+                  />
+                  <Button
+                    title="Join Call"
+                    onPress={() => { }}
+                    size="small"
+                    style={styles.appointmentButton}
+                  />
                 </View>
               </Card>
-            ))}
-            
-            <Card style={styles.syncCard}>
-              <View style={styles.syncCardContent}>
-                <View>
-                  <Subtitle>Auto-Sync Data</Subtitle>
-                  <Caption>All your devices sync automatically every hour</Caption>
-                </View>
+            </>
+          )}
+
+          {activeTab === 'devices' && (
+            <>
+              <View style={styles.devicesHeader}>
+                <Subtitle>Connected Devices</Subtitle>
                 <Button
-                  title="Sync Now"
-                  onPress={() => {}}
+                  title="Add Device"
+                  onPress={() => { }}
+                  variant="outline"
                   size="small"
+                  icon={<PlusCircle size={16} color={colors.primary} />}
                 />
               </View>
-            </Card>
-          </>
-        )}
-        
-        {activeTab === 'reports' && (
-          <>
-            <Subtitle style={styles.reportsTitle}>Health Reports</Subtitle>
-            <Caption style={styles.reportsSubtitle}>
-              View, download or share your health reports
-            </Caption>
-            
-            <View style={styles.reportsList}>
-              <TouchableOpacity style={styles.reportItem}>
-                <View style={[styles.reportIcon, { backgroundColor: colors.primary }]}>
-                  <Clipboard size={18} color="#FFFFFF" />
+
+              {healthData.devices.map(device => (
+                <Card key={device.id} style={styles.deviceCard}>
+                  <View style={styles.deviceContent}>
+                    <Image source={{ uri: device.image }} style={styles.deviceImage} />
+                    <View style={styles.deviceInfo}>
+                      <ThemedText style={styles.deviceName}>{device.name}</ThemedText>
+                      <View style={styles.deviceStatus}>
+                        <View
+                          style={[
+                            styles.statusIndicator,
+                            { backgroundColor: device.connected ? colors.success : colors.error }
+                          ]}
+                        />
+                        <Caption>
+                          {device.connected ? 'Connected' : 'Disconnected'} · Last sync {device.lastSync}
+                        </Caption>
+                      </View>
+                    </View>
+                    <ChevronRight size={20} color={colors.placeholder} />
+                  </View>
+                </Card>
+              ))}
+
+              <Card style={styles.syncCard}>
+                <View style={styles.syncCardContent}>
+                  <View>
+                    <Subtitle>Auto-Sync Data</Subtitle>
+                    <Caption>All your devices sync automatically every hour</Caption>
+                  </View>
+                  <Button
+                    title="Sync Now"
+                    onPress={() => { }}
+                    size="small"
+                  />
                 </View>
-                <View style={styles.reportInfo}>
-                  <ThemedText style={styles.reportName}>Monthly Progress Report</ThemedText>
-                  <Caption>May 2025 · PDF · 2.3 MB</Caption>
-                </View>
-                <ChevronRight size={20} color={colors.placeholder} />
-              </TouchableOpacity>
-              
-              <TouchableOpacity style={styles.reportItem}>
-                <View style={[styles.reportIcon, { backgroundColor: colors.primary }]}>
-                  <Clipboard size={18} color="#FFFFFF" />
-                </View>
-                <View style={styles.reportInfo}>
-                  <ThemedText style={styles.reportName}>Weight Tracking Summary</ThemedText>
-                  <Caption>Last 3 months · PDF · 1.8 MB</Caption>
-                </View>
-                <ChevronRight size={20} color={colors.placeholder} />
-              </TouchableOpacity>
-              
-              <TouchableOpacity style={styles.reportItem}>
-                <View style={[styles.reportIcon, { backgroundColor: colors.primary }]}>
-                  <Clipboard size={18} color="#FFFFFF" />
-                </View>
-                <View style={styles.reportInfo}>
-                  <ThemedText style={styles.reportName}>Nutritional Analysis</ThemedText>
-                  <Caption>April 2025 · PDF · 3.1 MB</Caption>
-                </View>
-                <ChevronRight size={20} color={colors.placeholder} />
-              </TouchableOpacity>
-            </View>
-            
-            <Button
-              title="Request Custom Report"
-              onPress={() => {}}
-              variant="outline"
-              fullWidth
-              style={styles.requestReportButton}
-            />
-          </>
-        )}
+              </Card>
+            </>
+          )}
+
+          {activeTab === 'reports' && (
+            <>
+              <Subtitle style={styles.reportsTitle}>Health Reports</Subtitle>
+              <Caption style={styles.reportsSubtitle}>
+                View, download or share your health reports
+              </Caption>
+
+              <View style={styles.reportsList}>
+                <TouchableOpacity style={styles.reportItem}>
+                  <View style={[styles.reportIcon, { backgroundColor: colors.primary }]}>
+                    <Clipboard size={18} color="#FFFFFF" />
+                  </View>
+                  <View style={styles.reportInfo}>
+                    <ThemedText style={styles.reportName}>Monthly Progress Report</ThemedText>
+                    <Caption>May 2025 · PDF · 2.3 MB</Caption>
+                  </View>
+                  <ChevronRight size={20} color={colors.placeholder} />
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.reportItem}>
+                  <View style={[styles.reportIcon, { backgroundColor: colors.primary }]}>
+                    <Clipboard size={18} color="#FFFFFF" />
+                  </View>
+                  <View style={styles.reportInfo}>
+                    <ThemedText style={styles.reportName}>Weight Tracking Summary</ThemedText>
+                    <Caption>Last 3 months · PDF · 1.8 MB</Caption>
+                  </View>
+                  <ChevronRight size={20} color={colors.placeholder} />
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.reportItem}>
+                  <View style={[styles.reportIcon, { backgroundColor: colors.primary }]}>
+                    <Clipboard size={18} color="#FFFFFF" />
+                  </View>
+                  <View style={styles.reportInfo}>
+                    <ThemedText style={styles.reportName}>Nutritional Analysis</ThemedText>
+                    <Caption>April 2025 · PDF · 3.1 MB</Caption>
+                  </View>
+                  <ChevronRight size={20} color={colors.placeholder} />
+                </TouchableOpacity>
+              </View>
+
+              <Button
+                title="Request Custom Report"
+                onPress={() => { }}
+                variant="outline"
+                fullWidth
+                style={styles.requestReportButton}
+              />
+            </>
+          )}
+        </SafeAreaView>
       </ScrollView>
     </ThemedView>
   );
