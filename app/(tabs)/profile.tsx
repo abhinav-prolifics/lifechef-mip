@@ -1,8 +1,9 @@
 import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import React from 'react';
-import { MoveRight, Wallet, Heart, User, ShoppingBag, Package, ArrowRightIcon, SuperscriptIcon, Mic, LucideEar, LucideHelpCircle, Banknote } from 'lucide-react-native';
+import { MoveRight, Wallet, Heart, User, ShoppingBag, Package, ArrowRightIcon, SuperscriptIcon, Mic, LucideEar, LucideHelpCircle, Banknote, LogOutIcon } from 'lucide-react-native';
 import Banner from "../../assets/images/banner.jpg";
 import Colors from '@/constants/Colors';
+import { router } from 'expo-router';
 
 const Profile = () => {
   const user = {
@@ -37,6 +38,11 @@ const Profile = () => {
       id: 5,
       name: "E-Gift Cards",
       icon: Wallet,
+    },
+    {
+      id: 6,
+      name: "Logout",
+      icon: LogOutIcon,
     }
   ];
 
@@ -92,13 +98,19 @@ const Profile = () => {
         <View style={styles.yourInformationContainer}>
           <Text style={styles.header}>YOUR INFORMATION</Text>
           {information.map((item) => (
-            <View key={item.id} style={styles.informationCardContainer}>
+            <TouchableOpacity key={item.id} style={styles.informationCardContainer}
+              onPress={() => {
+                if (item.id === 6) {
+                  router.replace("/auth");
+                }
+              }}
+            >
               <View style={styles.informationCard}>
                 <item.icon size={24} color="#333" />
                 <Text style={styles.informationCardLabel}>{item.name}</Text>
               </View>
               <ArrowRightIcon size={24} color="#333" />
-            </View>
+            </TouchableOpacity>
           ))}
         </View>
       </View>

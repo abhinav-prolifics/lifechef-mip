@@ -25,28 +25,29 @@ const Support = () => {
             text: 'Hi! Ready to start your personalized diet plan today?',
             sender: 'support',
             timestamp: '2025-05-28T09:00:00Z',
-            avatar: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+            avatar: 'https://cdn-icons-png.flaticon.com/512/149/149071.png',
         },
         {
             id: '2',
             text: 'Yes, I want to lose 5 kgs in 2 months. Can you help?',
             sender: 'user',
             timestamp: '2025-05-28T09:01:00Z',
-            avatar: 'https://cdn-icons-png.flaticon.com/512/149/149071.png',
+            avatar: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+
         },
         {
             id: '3',
             text: 'Absolutely! I’ll customize your meal plans accordingly.',
             sender: 'support',
             timestamp: '2025-05-28T09:02:00Z',
-            avatar: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+            avatar: 'https://cdn-icons-png.flaticon.com/512/149/149071.png',
         },
         {
             id: '4',
             text: 'Great, looking forward to the plan!',
             sender: 'user',
             timestamp: '2025-05-28T09:03:30Z',
-            avatar: 'https://cdn-icons-png.flaticon.com/512/149/149071.png  ',
+            avatar: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
         },
 
         // May 28 continued (shipping/tracking analogy replaced)
@@ -55,21 +56,21 @@ const Support = () => {
             text: 'Your first week’s meal plan is ready and sent to your email.',
             sender: 'support',
             timestamp: '2025-05-28T09:05:00Z',
-            avatar: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+            avatar: 'https://cdn-icons-png.flaticon.com/512/149/149071.png',
         },
         {
             id: '6',
             text: 'Thanks! Can you also include snack options?',
             sender: 'user',
             timestamp: '2025-05-28T09:05:45Z',
-            avatar: 'https://cdn-icons-png.flaticon.com/512/149/149071.png  ',
+            avatar: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
         },
         {
             id: '7',
             text: 'Sure, I’ve added healthy snacks to your plan now.',
             sender: 'support',
             timestamp: '2025-05-28T09:06:20Z',
-            avatar: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+            avatar: 'https://cdn-icons-png.flaticon.com/512/149/149071.png  ',
         },
 
         // May 26, 2025
@@ -78,28 +79,28 @@ const Support = () => {
             text: 'Hi, I’m unsure if I can eat dairy products on this plan?',
             sender: 'user',
             timestamp: '2025-05-26T14:22:00Z',
-            avatar: 'https://cdn-icons-png.flaticon.com/512/149/149071.png  ',
+            avatar: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
         },
         {
             id: '9',
             text: 'No worries! We can customize your plan to be dairy-free.',
             sender: 'support',
             timestamp: '2025-05-26T14:23:10Z',
-            avatar: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+            avatar: 'https://cdn-icons-png.flaticon.com/512/149/149071.png  ',
         },
         {
             id: '10',
             text: 'Perfect, thanks! What about sugar intake?',
             sender: 'user',
             timestamp: '2025-05-26T14:24:00Z',
-            avatar: 'https://cdn-icons-png.flaticon.com/512/149/149071.png  ',
+            avatar: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
         },
         {
             id: '11',
             text: 'We recommend limiting added sugars to under 25g daily.',
             sender: 'support',
             timestamp: '2025-05-26T14:25:00Z',
-            avatar: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+            avatar: 'https://cdn-icons-png.flaticon.com/512/149/149071.png  ',
         },
 
         // May 20, 2025
@@ -108,14 +109,14 @@ const Support = () => {
             text: 'Hello, is this the diet support chat?',
             sender: 'user',
             timestamp: '2025-05-20T10:00:00Z',
-            avatar: 'https://cdn-icons-png.flaticon.com/512/149/149071.png  ',
+            avatar: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
         },
         {
             id: '13',
             text: 'Yes, how can I help you with your diet goals today?',
             sender: 'support',
             timestamp: '2025-05-20T10:01:00Z',
-            avatar: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+            avatar: 'https://cdn-icons-png.flaticon.com/512/149/149071.png  ',
         },
     ]);
 
@@ -136,19 +137,19 @@ const Support = () => {
         }
     };
 
-    useLayoutEffect(() => {
-        navigation.setOptions({
-            headerLeft: () => (
-                <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <Text style={{ color: '#007bff', marginLeft: 10 }}>Back</Text>
-                </TouchableOpacity>
-            ),
-        });
-    }, [navigation]);
+    // useLayoutEffect(() => {
+    //     navigation.setOptions({
+    //         headerLeft: () => (
+    //             <TouchableOpacity onPress={() => navigation.goBack()}>
+    //                 <Text style={{ color: '#007bff', marginLeft: 10 }}>Back</Text>
+    //             </TouchableOpacity>
+    //         ),
+    //     });
+    // }, [navigation]);
 
-    const getProcessedMessages = (messages) => {
-        const result = [];
-        let lastDate = null;
+    const getProcessedMessages = (messages: any) => {
+        const result: any = [];
+        let lastDate: any = null;
 
         const sorted = [...messages].sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
         sorted.forEach((msg) => {
@@ -167,7 +168,7 @@ const Support = () => {
         return result;
     };
 
-    const renderItem = ({ item }) => {
+    const renderItem = ({ item }: any) => {
         if (item.type === 'date') {
             return (
                 <View style={styles.dateSeparator}>
