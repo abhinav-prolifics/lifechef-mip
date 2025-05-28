@@ -1,14 +1,15 @@
 import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import React from 'react';
-import { MoveRight, Wallet, Heart, User, ShoppingBag, Package, ArrowRightIcon } from 'lucide-react-native';
+import { MoveRight, Wallet, Heart, User, ShoppingBag, Package, ArrowRightIcon, SuperscriptIcon, Mic, LucideEar, LucideHelpCircle, Banknote } from 'lucide-react-native';
 import Banner from "../../assets/images/banner.jpg";
+import Colors from '@/constants/Colors';
 
 const Profile = () => {
   const user = {
     name: 'John Doe',
     email: 'johndoe@example.com',
     totalOrders: 25,
-    profileImage: 'https://images.unsplash.com/photo-1678286742832-26543bb49959?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8fDA%3D',
+    profileImage: 'https://cdn-icons-png.flaticon.com/128/3135/3135715.png',
   };
 
   const information = [
@@ -75,13 +76,13 @@ const Profile = () => {
 
             {/* Support Card */}
             <View style={styles.items}>
-              <Wallet size={30} />
+              <LucideHelpCircle size={30} />
               <Text style={styles.cardTitle}>Support</Text>
             </View>
 
             {/* Payments Card */}
             <View style={styles.items}>
-              <Wallet size={30} />
+              <Banknote size={30} />
               <Text style={styles.cardTitle}>Payments</Text>
             </View>
           </View>
@@ -139,9 +140,11 @@ const styles = StyleSheet.create({
   banner: {
     width: '100%',
     height: 80,
-    position: 'relative',
     borderRadius: 10,
     overflow: 'hidden',
+    display: "flex",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   backgroundImage: {
     position: 'absolute',
@@ -153,25 +156,25 @@ const styles = StyleSheet.create({
     height: '100%',
     resizeMode: 'cover',
     borderRadius: 10,
-    opacity: 0.5757,
+    opacity: 0.5,
+    backgroundColor: Colors.light.primary,
   },
   bannerText: {
     position: 'absolute',
-    right: 10,
+    left: 10,
     bottom: 10,
-    alignItems: 'flex-end',
-    justifyContent: 'flex-end',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
   },
   bannerBox: {
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
     padding: 10,
     borderRadius: 10,
-    alignItems: 'flex-end',
+    alignItems: 'flex-start',
   },
   bannerTextTitle: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#333',
+    color: Colors.light.primary,
   },
   detailsContainer: {
     flexDirection: 'row',
@@ -183,7 +186,7 @@ const styles = StyleSheet.create({
     marginRight: 5,
   },
   detailsItemContainer: {
-    marginTop:14,
+    marginTop: 14,
   },
   itemsContainer: {
     flexDirection: 'row',
@@ -207,7 +210,7 @@ const styles = StyleSheet.create({
   },
   yourInformationContainer: {
     // padding:10,
-    marginTop:14,
+    marginTop: 14,
   },
   header: {
     fontSize: 20,
