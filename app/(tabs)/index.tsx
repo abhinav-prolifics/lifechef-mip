@@ -285,9 +285,13 @@ export default function HomeScreen() {
           ))}
         </Card>
       </ScrollView>
-      <TouchableOpacity style={styles.fab} onPress={()=>{router.push("/(utils)/support")}}>
-        <MessageCircle size={30} color="#fff" />
+      <TouchableOpacity style={styles.fab} onPress={() => { router.push("/(utils)/support") }}>
+        <Image
+          source={{ uri: 'https://t4.ftcdn.net/jpg/01/34/29/31/360_F_134293169_ymHT6Lufl0i94WzyE0NNMyDkiMCH9HWx.jpg' }} 
+          style={styles.fabAvatar}
+        />
       </TouchableOpacity>
+
     </ThemedView>
   );
 }
@@ -465,7 +469,7 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 30,
-    backgroundColor: Colors.light.primary,
+    backgroundColor: '#fff',
     justifyContent: 'center',
     alignItems: 'center',
     elevation: 8,
@@ -474,4 +478,10 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.8,
     shadowRadius: 4,
   },
+  fabAvatar: {
+  width: 64,
+  height: 64,
+  borderRadius: 16,
+  resizeMode: 'cover',
+},
 });
