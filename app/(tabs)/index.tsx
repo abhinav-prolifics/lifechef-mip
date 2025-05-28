@@ -160,7 +160,7 @@ export default function HomeScreen() {
 
           <View style={styles.rewardsFooter}>
             <Button
-              title="View Details"
+              title={showRewardDetails ? "Hide Details":"View Details"}
               onPress={() => setShowRewardDetails(!showRewardDetails)}
               variant="outline"
               size="small"
@@ -245,7 +245,7 @@ export default function HomeScreen() {
           ))}
 
           <Button
-            title= {showAllMeals ? 'Hide' : 'View Meal Plans'}
+            title= 'View Meal Plans'
             onPress={() => router.push('/(utils)/mealPlan')}
             variant="outline"
             fullWidth
