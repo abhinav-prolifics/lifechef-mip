@@ -9,7 +9,8 @@ import useColorScheme from '@/hooks/useColorScheme';
 import { router } from 'expo-router';
 import { Award, Bell, ChevronRight, ChevronUp, DollarSign, MessageCircle, Scan } from 'lucide-react-native';
 import { useState } from 'react';
-import { Image, Platform, RefreshControl, ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { Alert,Image, Platform, RefreshControl, ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
+
 
 export default function HomeScreen() {
   const colorScheme = useColorScheme();
@@ -238,6 +239,16 @@ export default function HomeScreen() {
               </View>
               <TouchableOpacity
                 style={[styles.scanButton, { backgroundColor: colors.primary }]}
+                onPress={() =>
+                  Alert.alert(
+                    'Camera Access',
+                    'This will open your camera to scan the QR code.',
+                    [
+                      { text: 'Cancel', style: 'cancel' },
+                      { text: 'Ok' },
+                    ]
+                  )
+                }
               >
                 <Scan size={20} color="#FFFFFF" />
               </TouchableOpacity>

@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   logoContainer: {
-    height: 220,
+    height: 260,
     justifyContent: 'center',
     alignItems: 'center',
     position: 'relative',
