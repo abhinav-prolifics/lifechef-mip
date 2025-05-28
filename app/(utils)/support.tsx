@@ -136,16 +136,6 @@ const Support = () => {
         }
     };
 
-    useLayoutEffect(() => {
-        navigation.setOptions({
-            headerLeft: () => (
-                <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <Text style={{ color: '#007bff', marginLeft: 10 }}>Back</Text>
-                </TouchableOpacity>
-            ),
-        });
-    }, [navigation]);
-
     const getProcessedMessages = (messages) => {
         const result = [];
         let lastDate = null;
