@@ -25,7 +25,7 @@ const Support = () => {
             text: 'Hi! Ready to start your personalized diet plan today?',
             sender: 'support',
             timestamp: '2025-05-28T09:00:00Z',
-            avatar: 'https://t4.ftcdn.net/jpg/01/34/29/31/360_F_134293169_ymHT6Lufl0i94WzyE0NNMyDkiMCH9HWx.jpg',
+            avatar: 'https://t4.ftcdn.net/jpg/06/43/62/53/240_F_643625328_VPkhbt47OV328Nzqexsg2zjVu7tTgdXx.jpg',
         },
         {
             id: '2',
@@ -39,7 +39,7 @@ const Support = () => {
             text: 'Absolutely! I’ll customize your meal plans accordingly.',
             sender: 'support',
             timestamp: '2025-05-28T09:02:00Z',
-            avatar: 'https://t4.ftcdn.net/jpg/01/34/29/31/360_F_134293169_ymHT6Lufl0i94WzyE0NNMyDkiMCH9HWx.jpg',
+            avatar: 'https://t4.ftcdn.net/jpg/06/43/62/53/240_F_643625328_VPkhbt47OV328Nzqexsg2zjVu7tTgdXx.jpg',
         },
         {
             id: '4',
@@ -55,7 +55,7 @@ const Support = () => {
             text: 'Your first week’s meal plan is ready and sent to your email.',
             sender: 'support',
             timestamp: '2025-05-28T09:05:00Z',
-            avatar: 'https://t4.ftcdn.net/jpg/01/34/29/31/360_F_134293169_ymHT6Lufl0i94WzyE0NNMyDkiMCH9HWx.jpg',
+            avatar: 'https://t4.ftcdn.net/jpg/06/43/62/53/240_F_643625328_VPkhbt47OV328Nzqexsg2zjVu7tTgdXx.jpg',
         },
         {
             id: '6',
@@ -69,7 +69,7 @@ const Support = () => {
             text: 'Sure, I’ve added healthy snacks to your plan now.',
             sender: 'support',
             timestamp: '2025-05-28T09:06:20Z',
-            avatar: 'https://t4.ftcdn.net/jpg/01/34/29/31/360_F_134293169_ymHT6Lufl0i94WzyE0NNMyDkiMCH9HWx.jpg',
+            avatar: 'https://t4.ftcdn.net/jpg/06/43/62/53/240_F_643625328_VPkhbt47OV328Nzqexsg2zjVu7tTgdXx.jpg',
         },
 
         // May 26, 2025
@@ -85,7 +85,7 @@ const Support = () => {
             text: 'No worries! We can customize your plan to be dairy-free.',
             sender: 'support',
             timestamp: '2025-05-26T14:23:10Z',
-            avatar: 'https://t4.ftcdn.net/jpg/01/34/29/31/360_F_134293169_ymHT6Lufl0i94WzyE0NNMyDkiMCH9HWx.jpg',
+            avatar: 'https://t4.ftcdn.net/jpg/06/43/62/53/240_F_643625328_VPkhbt47OV328Nzqexsg2zjVu7tTgdXx.jpg',
         },
         {
             id: '10',
@@ -99,7 +99,7 @@ const Support = () => {
             text: 'We recommend limiting added sugars to under 25g daily.',
             sender: 'support',
             timestamp: '2025-05-26T14:25:00Z',
-            avatar: 'https://t4.ftcdn.net/jpg/01/34/29/31/360_F_134293169_ymHT6Lufl0i94WzyE0NNMyDkiMCH9HWx.jpg',
+            avatar: 'https://t4.ftcdn.net/jpg/06/43/62/53/240_F_643625328_VPkhbt47OV328Nzqexsg2zjVu7tTgdXx.jpg',
         },
 
         // May 20, 2025
@@ -115,7 +115,7 @@ const Support = () => {
             text: 'Yes, how can I help you with your diet goals today?',
             sender: 'support',
             timestamp: '2025-05-20T10:01:00Z',
-            avatar: 'https://t4.ftcdn.net/jpg/01/34/29/31/360_F_134293169_ymHT6Lufl0i94WzyE0NNMyDkiMCH9HWx.jpg',
+            avatar: 'https://t4.ftcdn.net/jpg/06/43/62/53/240_F_643625328_VPkhbt47OV328Nzqexsg2zjVu7tTgdXx.jpg',
         },
     ]);
 
@@ -136,9 +136,9 @@ const Support = () => {
         }
     };
 
-    const getProcessedMessages = (messages) => {
-        const result = [];
-        let lastDate = null;
+    const getProcessedMessages = (messages: any) => {
+        const result: any = [];
+        let lastDate: any = null;
 
         const sorted = [...messages].sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
         sorted.forEach((msg) => {
@@ -239,12 +239,14 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     userMessage: {
+        width: "65%",
         backgroundColor: '#2a823f',
     },
     supportMessage: {
         backgroundColor: '#fff',
         borderWidth: 1,
         borderColor: '#e0e0e0',
+        width: "65%"
     },
     messageText: {
         fontSize: 16,

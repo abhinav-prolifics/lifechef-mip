@@ -9,7 +9,7 @@ import useColorScheme from '@/hooks/useColorScheme';
 import { router } from 'expo-router';
 import { Award, Bell, ChevronRight, ChevronUp, DollarSign, MessageCircle, Scan } from 'lucide-react-native';
 import { useState } from 'react';
-import { Alert,Image, Platform, RefreshControl, ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { Alert, Image, Platform, RefreshControl, ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
 
 
 export default function HomeScreen() {
@@ -161,7 +161,7 @@ export default function HomeScreen() {
 
           <View style={styles.rewardsFooter}>
             <Button
-              title={showRewardDetails ? "Hide Details":"View Details"}
+              title={showRewardDetails ? "Hide Details" : "View Details"}
               onPress={() => setShowRewardDetails(!showRewardDetails)}
               variant="outline"
               size="small"
@@ -256,7 +256,7 @@ export default function HomeScreen() {
           ))}
 
           <Button
-            title= 'View Meal Plans'
+            title='View Meal Plans'
             onPress={() => router.push('/(utils)/mealPlan')}
             variant="outline"
             fullWidth
@@ -298,7 +298,7 @@ export default function HomeScreen() {
       </ScrollView>
       <TouchableOpacity style={styles.fab} onPress={() => { router.push("/(utils)/support") }}>
         <Image
-          source={{ uri: 'https://t4.ftcdn.net/jpg/01/34/29/31/360_F_134293169_ymHT6Lufl0i94WzyE0NNMyDkiMCH9HWx.jpg' }} 
+          source={{ uri: 'https://t4.ftcdn.net/jpg/06/43/62/53/240_F_643625328_VPkhbt47OV328Nzqexsg2zjVu7tTgdXx.jpg' }}
           style={styles.fabAvatar}
         />
       </TouchableOpacity>
@@ -490,9 +490,9 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
   },
   fabAvatar: {
-  width: 64,
-  height: 64,
-  borderRadius: 16,
-  resizeMode: 'cover',
-},
+    width: 64,
+    height: 64,
+    borderRadius: 16,
+    resizeMode: 'cover',
+  },
 });

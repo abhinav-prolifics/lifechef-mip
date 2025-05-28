@@ -1,6 +1,6 @@
 import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import React from 'react';
-import { MoveRight, Wallet, Heart, User, ShoppingBag, Package, ArrowRightIcon, SuperscriptIcon, Mic, LucideEar, LucideHelpCircle, Banknote, LogOutIcon } from 'lucide-react-native';
+import { MoveRight, Wallet, Heart, User, ShoppingBag, Package, ArrowRightIcon, SuperscriptIcon, Mic, LucideEar, LucideHelpCircle, Banknote, LogOutIcon, Lock } from 'lucide-react-native';
 import Banner from "../../assets/images/banner.jpg";
 import Colors from '@/constants/Colors';
 import { router } from 'expo-router';
@@ -31,8 +31,8 @@ const Profile = () => {
     },
     {
       id: 4,
-      name: "GST details",
-      icon: Package,
+      name: "Change Password",
+      icon: Lock,
     },
     {
       id: 5,
