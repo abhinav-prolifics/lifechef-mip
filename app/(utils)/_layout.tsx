@@ -2,6 +2,7 @@ import { Stack, useNavigation } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
 import React from 'react'
 import { TouchableOpacity } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 import { Ionicons } from '@expo/vector-icons'
 const backButton = () => {
   const navigation = useNavigation()
@@ -14,6 +15,8 @@ const backButton = () => {
 const UtilLayout = () => {
   return (
     <>
+     <SafeAreaView style={{ flex: 1 , backgroundColor: '#2E7D32' }} edges={['top', 'left', 'right']}>
+     <StatusBar style="dark" />
       <Stack>
         <Stack.Screen name="notification" options={{
           headerShown: true, title: 'Notifications', animation: 'fade',
@@ -28,6 +31,7 @@ const UtilLayout = () => {
           headerLeft: backButton
         }} />
       </Stack>
+      </SafeAreaView>
     </>
   )
 }
