@@ -61,7 +61,7 @@ export default function HealthScreen() {
         name: 'Glucose Monitor',
         connected: true,
         lastSync: '5 hours ago',
-        image: 'https://images.pexels.com/photos/7108298/pexels-photo-7108298.jpeg',
+        image: 'https://images.unsplash.com/photo-1684157007022-846d2fe6d5ef?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Z2x1Y29zZSUyMG1ldGVyfGVufDB8fDB8fHww',
       },
       {
         id: 3,
@@ -290,19 +290,19 @@ export default function HealthScreen() {
               ))}
 
               <Card style={styles.syncCard}>
-              <View style={styles.cardWrapper}>
-                <View style={styles.syncCardContent}>
-                  <View style={{ flex: 1, marginRight: 12 }}>
-                    <Subtitle>Auto-Sync Data</Subtitle>
-                    <Caption>All your devices sync automatically every hour</Caption>
+                <View style={styles.cardWrapper}>
+                  <View style={styles.syncCardContent}>
+                    <View style={{ flex: 1, marginRight: 12 }}>
+                      <Subtitle>Auto-Sync Data</Subtitle>
+                      <Caption>All your devices sync automatically every hour</Caption>
+                    </View>
+                    <Button
+                      title="Sync Now"
+                      onPress={() => { }}
+                      size="small"
+                    />
                   </View>
-                  <Button
-                    title="Sync Now"
-                    onPress={() => {}}
-                    size="small"
-                  />
                 </View>
-              </View>
               </Card>
             </>
           )}
@@ -518,22 +518,22 @@ const styles = StyleSheet.create({
     marginBottom: 32,
   },
   cardWrapper: {
-  backgroundColor: '#fff',
-  padding: 12,
-  borderRadius: 10,
-  margin: 10,
-  elevation: 2, 
-  shadowColor: '#000', 
-  shadowOffset: { width: 0, height: 1 },
-  shadowOpacity: 0.1,
-  shadowRadius: 4,
-},
-syncCardContent: {
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  flexWrap: 'wrap', 
-},
+    backgroundColor: '#fff',
+    padding: 12,
+    borderRadius: 10,
+    margin: 10,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+  },
+  syncCardContent: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+  },
   reportsTitle: {
     marginBottom: 4,
   },
