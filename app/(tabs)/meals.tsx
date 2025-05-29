@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, ScrollView, View, Image, TouchableOpacity, FlatList } from 'react-native';
+import { StyleSheet, ScrollView, View, Image, TouchableOpacity, FlatList, SafeAreaView } from 'react-native';
 import { ThemedView, Card } from '@/components/ThemedView';
 import { ThemedText, Title, Subtitle, Caption } from '@/components/ThemedText';
 import Button from '@/components/Button';
@@ -191,7 +191,8 @@ export default function MealsScreen() {
   );
 
   return (
-    <ThemedView style={styles.container}>
+    <SafeAreaView style={styles.container}>
+      <ThemedView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
         {/* Search Bar */}
         <Input
@@ -273,6 +274,7 @@ export default function MealsScreen() {
         </Card>
       </ScrollView>
     </ThemedView>
+    </SafeAreaView>
   );
 }
 

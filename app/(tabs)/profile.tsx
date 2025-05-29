@@ -21,7 +21,7 @@ const Profile = () => {
     },
     {
       id: 2,
-      name: "Care Giver",
+      name: "Care Givers",
       icon: HeartHandshake,
     },
     {
