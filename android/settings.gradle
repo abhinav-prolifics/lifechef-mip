@@ -31,7 +31,7 @@ extensions.configure(com.facebook.react.ReactSettingsExtension) { ex ->
 }
 expoAutolinking.useExpoModules()
 
-rootProject.name = 'Life Chef Member Intelligence Platform'
+rootProject.name = 'Member Intelligence Platform'
 
 expoAutolinking.useExpoVersionCatalog()
 
