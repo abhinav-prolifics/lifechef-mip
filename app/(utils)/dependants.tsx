@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     scrollContent: {
-        padding: 16,
+        padding: 10,
     },
     card: {
         flexDirection: 'row',
