@@ -21,7 +21,7 @@ const Profile = () => {
     },
     {
       id: 2,
-      name: "Bookmarked recipes",
+      name: "Dependants",
       icon: Heart,
     },
     {
@@ -45,6 +45,16 @@ const Profile = () => {
       icon: LogOutIcon,
     }
   ];
+
+
+  const handleButtonPress = (id:number) => {
+    if (id == 2) {
+      router.push("/(utils)/dependants");
+    } else
+    if (id === 6) {
+      router.replace("/auth");
+    }
+  }
 
   return (
     <ScrollView>
@@ -99,11 +109,7 @@ const Profile = () => {
           <Text style={styles.header}>YOUR INFORMATION</Text>
           {information.map((item) => (
             <TouchableOpacity key={item.id} style={styles.informationCardContainer}
-              onPress={() => {
-                if (item.id === 6) {
-                  router.replace("/auth");
-                }
-              }}
+              onPress={()=>handleButtonPress(item.id)}
             >
               <View style={styles.informationCard}>
                 <item.icon size={24} color="#333" />

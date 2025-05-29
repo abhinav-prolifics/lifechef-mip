@@ -1,0 +1,127 @@
+import React from 'react';
+import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity } from 'react-native';
+import { ThemedView } from '@/components/ThemedView';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { router } from 'expo-router';
+import { Plus } from 'lucide-react-native';
+import Colors from '@/constants/Colors';
+
+const Dependants = () => {
+    const dependants = [
+        {
+            id: 1,
+            name: "John Smith",
+            accessType: "Full",
+            profileImage: "https://randomuser.me/api/portraits/men/45.jpg",
+            relationship: "Father",
+            age: 45
+        },
+        {
+            id: 2,
+            name: "Jane Smith",
+            accessType: "Limited",
+            profileImage: "https://randomuser.me/api/portraits/women/43.jpg",
+            relationship: "Mother",
+            age: 43
+        },
+        {
+            id: 3,
+            name: "Emily Smith",
+            accessType: "View Only",
+            profileImage: "https://randomuser.me/api/portraits/women/22.jpg",
+            relationship: "Daughter",
+            age: 16
+        },
+        {
+            id: 4,
+            name: "Michael Smith",
+            accessType: "Full",
+            profileImage: "https://randomuser.me/api/portraits/men/18.jpg",
+            relationship: "Son",
+            age: 18
+        }
+    ];
+
+    return (
+        <ThemedView style={styles.container}>
+            <ScrollView contentContainerStyle={styles.scrollContent}>
+                <SafeAreaView>
+                    {dependants.map(dep => (
+                        <View key={dep.id} style={styles.card}>
+                            <Image source={{ uri: dep.profileImage }} style={styles.image} />
+                            <View style={styles.info}>
+                                <Text style={styles.name}>{dep.name}</Text>
+                                <Text>Relationship: {dep.relationship}</Text>
+                                <Text>Age: {dep.age}</Text>
+                                <Text>Access Type: {dep.accessType}</Text>
+                            </View>
+                        </View>
+                    ))}
+                </SafeAreaView>
+            </ScrollView>
+            <TouchableOpacity
+                style={styles.fab}
+                onPress={() => {
+                    router.push('/(utils)/create-dependants');
+                }}
+            >
+                <Plus color={"#fff"} size={24} />
+            </TouchableOpacity>
+        </ThemedView>
+    );
+};
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+    },
+    scrollContent: {
+        padding: 16,
+    },
+    card: {
+        flexDirection: 'row',
+        backgroundColor: '#f0f0f0',
+        borderRadius: 10,
+        padding: 12,
+        marginBottom: 12,
+        alignItems: 'center',
+    },
+    image: {
+        width: 60,
+        height: 60,
+        borderRadius: 30,
+        marginRight: 12,
+    },
+    info: {
+        flex: 1,
+    },
+    name: {
+        fontSize: 18,
+        fontWeight: '600',
+        marginBottom: 4,
+    },
+    fab: {
+        position: 'absolute',
+        bottom: 30,
+        right: 30,
+        width: 60,
+        height: 60,
+        borderRadius: 30,
+        backgroundColor: Colors.dark.primary,
+        justifyContent: 'center',
+        alignItems: 'center',
+        elevation: 8,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.8,
+        shadowRadius: 4,
+    },
+    fabAvatar: {
+        width: 64,
+        height: 64,
+        borderRadius: 16,
+        resizeMode: 'cover',
+    },
+});
+
+export default Dependants;

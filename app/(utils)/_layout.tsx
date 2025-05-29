@@ -29,6 +29,14 @@ const UtilLayout = () => {
           headerShown: true, title: 'Support', animation: 'fade',
           headerLeft: backButton
         }} />
+         <Stack.Screen name="dependants" options={{
+          headerShown: true, title: 'Dependants', animation: 'fade',
+          headerLeft: backButton
+        }} />
+        <Stack.Screen name="create-dependants" options={{
+          headerShown: true, title: 'Create Dependants', animation: 'fade',
+          headerLeft: backButton
+        }} />
       </Stack>
     </>
   )
