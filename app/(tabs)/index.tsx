@@ -10,6 +10,8 @@ import { router } from 'expo-router';
 import { Award, Bell, ChevronRight, ChevronUp, DollarSign, MessageCircle, Scan } from 'lucide-react-native';
 import { useState } from 'react';
 import { Alert, Image, Platform, RefreshControl, ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
+import logo from "../../assets/images/lifechef-icon.jpeg"
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 export default function HomeScreen() {
@@ -112,7 +114,8 @@ export default function HomeScreen() {
   };
 
   return (
-    <ThemedView style={styles.container}>
+    <SafeAreaView style={styles.safeArea}>
+      <ThemedView style={styles.container}>
       <ScrollView
         contentContainerStyle={styles.scrollContent}
         refreshControl={
@@ -125,6 +128,7 @@ export default function HomeScreen() {
             <ThemedText style={styles.greeting}>Welcome back,</ThemedText>
             <Title>{userData.name}</Title>
           </View>
+          <Image source={logo} style={styles.logo} />
           <TouchableOpacity style={styles.notificationButton} onPress={() => { router.push("/(utils)/notification") }}>
             <Bell size={24} color={colors.text} />
             <View style={[styles.notificationBadge, { backgroundColor: colors.primary }]}>
@@ -304,10 +308,14 @@ export default function HomeScreen() {
       </TouchableOpacity>
 
     </ThemedView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+  },
   container: {
     flex: 1,
   },
@@ -315,12 +323,18 @@ const styles = StyleSheet.create({
     padding: 16,
     paddingBottom: 32,
   },
+  logo: {
+    width: 120,
+    height: 100,
+    resizeMode: 'contain',
+    marginTop: 16,
+    alignSelf: 'center',
+  },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 16,
-    marginTop: Platform.OS === 'ios' ? 40 : 40,
   },
   greeting: {
     fontSize: 16,

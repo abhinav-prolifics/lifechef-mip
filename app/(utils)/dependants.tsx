@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity } from 'rea
 import { ThemedView } from '@/components/ThemedView';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
-import { Plus } from 'lucide-react-native';
+import { Pencil, Plus, Trash2 } from 'lucide-react-native';
 import Colors from '@/constants/Colors';
 
 const Dependants = () => {
@@ -48,14 +48,23 @@ const Dependants = () => {
                 <SafeAreaView>
                     {dependants.map(dep => (
                         <View key={dep.id} style={styles.card}>
-                            <Image source={{ uri: dep.profileImage }} style={styles.image} />
-                            <View style={styles.info}>
-                                <Text style={styles.name}>{dep.name}</Text>
-                                <Text>Relationship: {dep.relationship}</Text>
-                                <Text>Age: {dep.age}</Text>
-                                <Text>Access Type: {dep.accessType}</Text>
-                            </View>
+                        <Image source={{ uri: dep.profileImage }} style={styles.image} />
+                        <View style={styles.info}>
+                          <Text style={styles.name}>{dep.name}</Text>
+                          <Text>Relationship: {dep.relationship}</Text>
+                          <Text>Age: {dep.age}</Text>
+                          <Text>Access Type: {dep.accessType}</Text>
+                          <View style={styles.actions}>
+                            <TouchableOpacity onPress={() => console.log(`Edit ${dep.name}`)} style={styles.iconButton}>
+                              <Pencil size={20} color={Colors.dark.primary} />
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => console.log(`Delete ${dep.name}`)} style={styles.iconButton}>
+                              <Trash2 size={20} color="red" />
+                            </TouchableOpacity>
+                          </View>
                         </View>
+                      </View>
+                      
                     ))}
                 </SafeAreaView>
             </ScrollView>
@@ -86,6 +95,14 @@ const styles = StyleSheet.create({
         marginBottom: 12,
         alignItems: 'center',
     },
+    actions: {
+        flexDirection: 'row',
+        marginTop: 8,
+        gap: 12,
+      },
+      iconButton: {
+        padding: 4,
+      },
     image: {
         width: 60,
         height: 60,

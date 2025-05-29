@@ -68,7 +68,7 @@ export default function AuthScreen() {
               resizeMode="contain"
             />
             <ThemedText style={styles.logoText} lightColor="#FFFFFF" darkColor="#FFFFFF">
-             Life Chef Member intelligence platform
+             Member Intelligence Platform
             </ThemedText>
           </View>
           
