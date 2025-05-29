@@ -1,6 +1,6 @@
 import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import React from 'react';
-import { MoveRight, Wallet, Heart, User, ShoppingBag, Package, ArrowRightIcon, SuperscriptIcon, Mic, LucideEar, LucideHelpCircle, Banknote, LogOutIcon, Lock } from 'lucide-react-native';
+import { MoveRight, Wallet, User, ShoppingBag, ArrowRightIcon, LucideHelpCircle, Banknote, LogOutIcon, Lock, HeartHandshake } from 'lucide-react-native';
 import Banner from "../../assets/images/banner.jpg";
 import Colors from '@/constants/Colors';
 import { router } from 'expo-router';
@@ -21,8 +21,8 @@ const Profile = () => {
     },
     {
       id: 2,
-      name: "Dependants",
-      icon: Heart,
+      name: "Care Giver",
+      icon: HeartHandshake,
     },
     {
       id: 3,

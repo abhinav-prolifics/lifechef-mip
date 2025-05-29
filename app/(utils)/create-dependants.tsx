@@ -119,7 +119,7 @@ const CreateDependants = () => {
 
                         <Button
                         onPress={()=>{}}
-                        title='Create Dependant'
+                        title='Create Care Giver'
                         />
 
                     </View>
