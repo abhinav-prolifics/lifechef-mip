@@ -4,7 +4,8 @@ import React from 'react'
 import { TouchableOpacity } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Ionicons } from '@expo/vector-icons'
-const backButton = () => {
+
+const BackButton = () => {
   const navigation = useNavigation()
   return (
     <TouchableOpacity onPress={() => navigation.goBack()} style={{ padding: 10 }}>
@@ -12,33 +13,34 @@ const backButton = () => {
     </TouchableOpacity>
   )
 }
+
 const UtilLayout = () => {
   return (
-    <>
+    <SafeAreaView style={{ flex: 1 }}>
       <StatusBar style="dark" />
       <Stack>
         <Stack.Screen name="notification" options={{
           headerShown: true, title: 'Notifications', animation: 'fade',
-          headerLeft: backButton
+          headerLeft: () => <BackButton />
         }} />
         <Stack.Screen name="mealPlan" options={{
           headerShown: true, title: 'Meal Plan', animation: 'fade',
-          headerLeft: backButton
+          headerLeft: () => <BackButton />
         }} />
         <Stack.Screen name="support" options={{
           headerShown: true, title: 'Support', animation: 'fade',
-          headerLeft: backButton
+          headerLeft: () => <BackButton />
         }} />
          <Stack.Screen name="dependants" options={{
           headerShown: true, title: 'Care Givers', animation: 'fade',
-          headerLeft: backButton
+          headerLeft: () => <BackButton />
         }} />
         <Stack.Screen name="create-dependants" options={{
           headerShown: true, title: 'Create Care Giver', animation: 'fade',
-          headerLeft: backButton
+          headerLeft: () => <BackButton />
         }} />
       </Stack>
-    </>
+    </SafeAreaView>
   )
 }
 

@@ -299,6 +299,20 @@ export default function HomeScreen() {
             </View>
           ))}
         </Card>
+
+{/* Branding Watermark */}
+<View style={styles.watermarkContainer}>
+  <Image
+    source={require('../../assets/images/lifechef-icon.jpeg')}
+    style={styles.watermarkLogo}
+  />
+  <View>
+    <ThemedText style={styles.watermarkText}>Life Chef</ThemedText>
+    <Caption style={styles.watermarkTagline}>Nourish your life</Caption>
+  </View>
+</View>
+
+
       </ScrollView>
       <TouchableOpacity style={styles.fab} onPress={() => { router.push("/(utils)/support") }}>
         <Image
@@ -509,4 +523,29 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     resizeMode: 'cover',
   },
+  watermarkContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 24,
+    marginBottom: 40,
+    opacity: 0.5,
+  },
+  watermarkLogo: {
+    width: 36,
+    height: 36,
+    borderRadius: 8,
+    marginRight: 8,
+    resizeMode: 'contain',
+  },
+  watermarkText: {
+    fontSize: 16,
+    fontWeight: '600',
+    fontFamily: 'Inter-SemiBold',
+  },
+  watermarkTagline: {
+    fontSize: 12,
+    opacity: 0.7,
+  },
+  
 });

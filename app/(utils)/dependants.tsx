@@ -14,7 +14,7 @@ const Dependants = () => {
             accessType: "Full",
             profileImage: "https://randomuser.me/api/portraits/men/45.jpg",
             relationship: "Father",
-            age: 45
+            age: 72
         },
         {
             id: 2,
@@ -22,7 +22,7 @@ const Dependants = () => {
             accessType: "Limited",
             profileImage: "https://randomuser.me/api/portraits/women/43.jpg",
             relationship: "Mother",
-            age: 43
+            age: 68
         },
         {
             id: 3,
@@ -38,14 +38,15 @@ const Dependants = () => {
             accessType: "Full",
             profileImage: "https://randomuser.me/api/portraits/men/18.jpg",
             relationship: "Son",
-            age: 18
+            age: 20
         }
     ];
+    
 
     return (
         <ThemedView style={styles.container}>
+            <SafeAreaView style={{ flex: 1 }}>
             <ScrollView contentContainerStyle={styles.scrollContent}>
-                <SafeAreaView>
                     {dependants.map(dep => (
                         <View key={dep.id} style={styles.card}>
                         <Image source={{ uri: dep.profileImage }} style={styles.image} />
@@ -66,7 +67,6 @@ const Dependants = () => {
                       </View>
                       
                     ))}
-                </SafeAreaView>
             </ScrollView>
             <TouchableOpacity
                 style={styles.fab}
@@ -76,6 +76,7 @@ const Dependants = () => {
             >
                 <Plus color={"#fff"} size={24} />
             </TouchableOpacity>
+            </SafeAreaView>
         </ThemedView>
     );
 };

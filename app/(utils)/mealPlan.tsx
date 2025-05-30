@@ -2,7 +2,7 @@ import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { ChevronLeft } from 'lucide-react-native';
 import React, { useEffect, useRef, useState } from 'react';
-import { Animated, Dimensions, Image, Modal, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { Animated, Dimensions, Image, Modal, SafeAreaView, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import Svg, { Circle } from 'react-native-svg';
 
 // import CircularProgress from 'react-native-circular-progress-indicator';
@@ -321,6 +321,7 @@ export default function YourMealPlanScreen() {
 
   return (
     <ScrollView style={{ flex: 1, padding: 10, paddingBottom:20, paddingTop:30, backgroundColor: '#fff' }}>
+      <SafeAreaView style={{ flex: 1 }}>
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginBottom: 16 }}>
         {days.map(day => (
           <TouchableOpacity key={day} onPress={() => setSelectedDay(day)}>
@@ -368,6 +369,7 @@ export default function YourMealPlanScreen() {
 
       </Modal>}
     <StatusBar style='auto'/>
+    </SafeAreaView>
     </ScrollView>
   );
 }

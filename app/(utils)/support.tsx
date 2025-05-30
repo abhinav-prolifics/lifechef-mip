@@ -157,7 +157,7 @@ const Support = () => {
         return result;
     };
 
-    const renderItem = ({ item }) => {
+    const renderItem = ({ item }:any) => {
         if (item.type === 'date') {
             return (
                 <View style={styles.dateSeparator}>
