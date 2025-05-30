@@ -12,7 +12,7 @@ const Dependants = () => {
             id: 1,
             name: "John Smith",
             accessType: "Full",
-            profileImage: "https://randomuser.me/api/portraits/men/45.jpg",
+            profileImage: "https://images.pexels.com/photos/3018993/pexels-photo-3018993.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
             relationship: "Father",
             age: 72
         },
@@ -20,7 +20,7 @@ const Dependants = () => {
             id: 2,
             name: "Jane Smith",
             accessType: "Limited",
-            profileImage: "https://randomuser.me/api/portraits/women/43.jpg",
+            profileImage: "https://images.pexels.com/photos/5990272/pexels-photo-5990272.jpeg?auto=compress&cs=tinysrgb&w=1200",
             relationship: "Mother",
             age: 68
         },
