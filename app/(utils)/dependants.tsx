@@ -9,33 +9,17 @@ import Colors from '@/constants/Colors';
 const Dependants = () => {
     const dependants = [
         {
-            id: 1,
-            name: "John Smith",
-            accessType: "Full",
-            profileImage: "https://images.pexels.com/photos/3018993/pexels-photo-3018993.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-            relationship: "Father",
-            age: 72
-        },
-        {
-            id: 2,
-            name: "Jane Smith",
-            accessType: "Limited",
-            profileImage: "https://images.pexels.com/photos/5990272/pexels-photo-5990272.jpeg?auto=compress&cs=tinysrgb&w=1200",
-            relationship: "Mother",
-            age: 68
-        },
-        {
             id: 3,
-            name: "Emily Smith",
+            name: "Emily Doe",
             accessType: "View Only",
             profileImage: "https://randomuser.me/api/portraits/women/22.jpg",
-            relationship: "Daughter",
-            age: 16
+            relationship: "Wife",
+            age: 38
         },
         {
             id: 4,
-            name: "Michael Smith",
-            accessType: "Full",
+            name: "Michael Doe",
+            accessType: "Full Access",
             profileImage: "https://randomuser.me/api/portraits/men/18.jpg",
             relationship: "Son",
             age: 20
