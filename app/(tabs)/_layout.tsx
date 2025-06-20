@@ -2,6 +2,8 @@ import { Tabs } from 'expo-router';
 import { Clipboard, Apple, Home as Home, User, MessageCircle, BookOpen, Bell } from 'lucide-react-native';
 import Colors from '@/constants/Colors';
 import useColorScheme from '@/hooks/useColorScheme';
+import { Ionicons } from '@expo/vector-icons';
+import CartIconWithBadge from '@/components/cartIocnWithBadge';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -51,6 +53,17 @@ export default function TabLayout() {
           headerTitle: 'Meal Planning',
         }}
       />
+       <Tabs.Screen
+  name="order"
+  options={{
+    title: 'Order',
+    tabBarIcon: ({ color, size }) => (
+      <Ionicons name="receipt-outline" size={size} color={color} />
+    ),
+    headerTitle: 'Order',
+    headerRight: () => <CartIconWithBadge />,
+  }}
+/>
       <Tabs.Screen
         name="health"
         options={{

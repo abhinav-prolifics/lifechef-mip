@@ -1,4 +1,4 @@
-import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import React from 'react';
 import { MoveRight, Wallet, User, ShoppingBag, ArrowRightIcon, LucideHelpCircle, Banknote, LogOutIcon, Lock, HeartHandshake } from 'lucide-react-native';
 import Banner from "../../assets/images/banner.jpg";
@@ -53,6 +53,10 @@ const Profile = () => {
     } else
     if (id === 6) {
       router.replace("/auth");
+    }else if(id==1){
+      router.push("/orderHistory");
+      
+      // Alert.alert('Orders', 'This will existing and past orders.');
     }
   }
 

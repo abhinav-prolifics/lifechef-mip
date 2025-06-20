@@ -23,6 +23,10 @@ const UtilLayout = () => {
           headerShown: true, title: 'Notifications', animation: 'fade',
           headerLeft: () => <BackButton />
         }} />
+        <Stack.Screen name="cart" options={{
+          headerShown: true, title: 'Your Cart', animation: 'fade',
+          headerLeft: () => <BackButton />
+        }} />
         <Stack.Screen name="mealPlan" options={{
           headerShown: true, title: 'Meal Plan', animation: 'fade',
           headerLeft: () => <BackButton />
@@ -37,6 +41,10 @@ const UtilLayout = () => {
         }} />
         <Stack.Screen name="create-dependants" options={{
           headerShown: true, title: 'Create Care Giver', animation: 'fade',
+          headerLeft: () => <BackButton />
+        }} />
+         <Stack.Screen name="orderHistory" options={{
+          headerShown: true, title: 'Order History', animation: 'fade',
           headerLeft: () => <BackButton />
         }} />
       </Stack>

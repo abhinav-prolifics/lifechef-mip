@@ -10,6 +10,7 @@ import {
   Inter_700Bold
 } from '@expo-google-fonts/inter';
 import { SplashScreen } from 'expo-router';
+import { AppProvider } from '@/hooks/appContext';
 
 // Prevent splash screen from auto-hiding
 SplashScreen.preventAutoHideAsync();
@@ -37,6 +38,7 @@ export default function RootLayout() {
   }
 
   return (
+    <AppProvider>
     <>
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="index" />
@@ -46,5 +48,6 @@ export default function RootLayout() {
       </Stack>
       <StatusBar style="auto" />
     </>
+    </AppProvider>
   );
 }
